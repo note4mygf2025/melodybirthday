@@ -48,6 +48,7 @@
       background: red;
       transform: rotate(45deg);
       animation: fall 5s linear infinite;
+      z-index: 999;
     }
 
     .heart::before,
@@ -100,7 +101,6 @@
     </p>
   </div>
 
-  <!-- Falling hearts -->
   <script>
     function createHeart() {
       const heart = document.createElement('div');
