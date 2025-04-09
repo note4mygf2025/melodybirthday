@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Love You, Babe</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: #ffeef2;
+      font-family: 'Comic Sans MS', cursive, sans-serif;
+      overflow-x: hidden;
+    }
+
+    .container {
+      text-align: center;
+      padding: 50px 20px;
+    }
+
+    img {
+      max-width: 90%;
+      border-radius: 20px;
+      box-shadow: 0 0 20px rgba(255, 0, 102, 0.4);
+    }
+
+    p {
+      margin-top: 30px;
+      font-size: 1.2em;
+      color: #444;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+      background: rgba(255, 255, 255, 0.8);
+      padding: 20px;
+      border-radius: 12px;
+      line-height: 1.6;
+    }
+
+    audio {
+      display: none;
+    }
+
+    .heart {
+      position: fixed;
+      width: 20px;
+      height: 20px;
+      background: red;
+      transform: rotate(45deg);
+      animation: fall 5s linear infinite;
+    }
+
+    .heart::before,
+    .heart::after {
+      content: '';
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background: red;
+      border-radius: 50%;
+    }
+
+    .heart::before {
+      top: -10px;
+      left: 0;
+    }
+
+    .heart::after {
+      left: -10px;
+      top: 0;
+    }
+
+    @keyframes fall {
+      0% {
+        transform: translateY(-100px) rotate(45deg);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(100vh) rotate(45deg);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <audio autoplay loop>
+    <source src="assets/lovesong.mp3" type="audio/mpeg">
+    Your browser does not support the audio tag.
+  </audio>
+
+  <div class="container">
+    <img src="assets/us.jpg" alt="Us Together">
+    <p>
+      My love, I made this little site just to tell you how much you mean to me.
+      Every single moment with you feels like a dream, and I’m endlessly thankful
+      for all the laughs, late-night talks, kisses, and goofy adventures we’ve had.
+      This is just a small way of saying: I love you, more than words can ever say,
+      and I'm so lucky to be yours. Forever and always.
+    </p>
+  </div>
+
+  <!-- Falling hearts -->
+  <script>
+    function createHeart() {
+      const heart = document.createElement('div');
+      heart.classList.add('heart');
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.animationDuration = (Math.random() * 3 + 2) + "s";
+      document.body.appendChild(heart);
+
+      setTimeout(() => {
+        heart.remove();
+      }, 5000);
+    }
+
+    setInterval(createHeart, 300);
+  </script>
+
+</body>
+</html>
