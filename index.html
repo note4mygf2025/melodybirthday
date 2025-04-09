@@ -85,11 +85,31 @@
         opacity: 0;
       }
     }
+
+    #startButton {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: #ff80ab;
+      color: white;
+      font-size: 1.5em;
+      padding: 15px 25px;
+      border: none;
+      border-radius: 12px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+      z-index: 10000;
+      cursor: pointer;
+    }
   </style>
 </head>
 <body>
 
-  <audio autoplay loop>
+  <!-- Tap to Begin Button -->
+  <button id="startButton">💗 Tap to Begin 💗</button>
+
+  <!-- Music (mobile-friendly) -->
+  <audio id="loveSong" loop>
     <source src="assets/lovesong.mp3" type="audio/mpeg">
     Your browser does not support the audio tag.
   </audio>
@@ -105,8 +125,8 @@
     </p>
   </div>
 
-  <!-- Floating hearts -->
   <script>
+    // Floating Hearts
     function createHeart() {
       const heart = document.createElement('div');
       heart.classList.add('heart');
@@ -114,13 +134,19 @@
       heart.style.animationDuration = (Math.random() * 3 + 4) + "s";
       heart.style.opacity = Math.random();
       document.body.appendChild(heart);
-
-      setTimeout(() => {
-        heart.remove();
-      }, 7000);
+      setTimeout(() => heart.remove(), 7000);
     }
-
     setInterval(createHeart, 250);
+
+    // Tap to start music
+    document.getElementById("startButton").addEventListener("click", function () {
+      const audio = document.getElementById("loveSong");
+      audio.play().then(() => {
+        this.style.display = "none";
+      }).catch(e => {
+        alert("Tap again to start the love music 🎶");
+      });
+    });
   </script>
 
 </body>
